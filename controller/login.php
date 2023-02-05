@@ -40,4 +40,3 @@ if (isset($_POST) && !empty($_POST)) {
         } else $error = 'Email incorrect';
     }
 }
-print_r(Session::getLogged());
