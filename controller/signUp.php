@@ -1,7 +1,7 @@
 <?php
 
 $error = null;
-$notif = null;
+$isRegistered = null;
 
 // test Post for insert or delete
 if (isset($_POST) && !empty($_POST)) {
@@ -30,13 +30,12 @@ if (isset($_POST) && !empty($_POST)) {
                     } else {
                         // Hashage pwd
                         $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
-                        // Test si dirthdate field exist
                         $userM->insert($name, $email, $passwordHashed);
-                        // Notif
-                        $notif = 'L\'utilisateur a été enregistré avec succès';
+                        $_SESSION['registered'] = 'ok';
                     }
                 } else $error = 'Le champ password est trop court';
             } else $error = 'Le champ email n\'est pas valide';
         } else $error = 'Le champ name est trop long';
     }
 }
+Session::setError($error);

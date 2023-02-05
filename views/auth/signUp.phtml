@@ -5,28 +5,38 @@
                 <h1 class="text-center mb-3">
                     <i class="fas fa-user-plus"></i> Register
                 </h1>
-                <!--TODO trouver une solution pour afficher les erreurs-->
-                <form action="signUp" method="post">
-                    <div class="form-group">
-                        <label for="name">Pseudo</label>
-                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter name" />
+                <?php if (Session::getError() !== null) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= Session::getError() ?>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter email" />
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" class="form-control" placeholder="Create password" />
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">
-                        Register
-                    </button>
-                </form>
-                <p class="lead mt-4">
-                    Have An Account? <a href="login">Login</a>
-                </p>
+                <?php endif; ?>
+                <?php if (!Session::isRegistered()) : ?>
+                    <form action="signUp" method="post">
+                        <div class="form-group">
+                            <label for="name">Pseudo</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Create password" />
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Register
+                        </button>
+                    </form>
+                    <p class="lead mt-4">
+                        Have An Account? <a href="login">Login</a>
+                    </p>
             </div>
+        <?php else : ?>
+            <div class="alert alert-success" role="alert">
+                <?= 'Vous êtes enregistré ! ' ?>
+            </div>
+        <?php endif ?>
         </div>
     </div>
 </div>

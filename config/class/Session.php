@@ -68,4 +68,10 @@ class Session
     {
         return isset($_SESSION['error']) ? $_SESSION['error'] : null;
     }
+
+    public static function isRegistered(): bool
+    {
+
+        return isset($_SESSION['registered']) ? true : false;
+    }
 }

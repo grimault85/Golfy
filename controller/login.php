@@ -2,7 +2,7 @@
 
 // Notifs
 $error = null;
-$notif = null;
+
 // test Post for insert or delete
 if (isset($_POST) && !empty($_POST)) {
     // Check Empty fields
@@ -32,10 +32,10 @@ if (isset($_POST) && !empty($_POST)) {
 
                     if (password_verify($password, $user['password'])) {
                         session::init($user['name'], $email, $user['role_id']);
-                        $notif = 'Connexion avec succès';
                     } else $error = 'Mot de pass incorrect';
                 } else $error = 'Aucun utilisateur n\'existe avec cet email';
             } else $error = 'Mot de pass trop court';
         } else $error = 'Email incorrect';
     }
 }
+Session::setError($error);
