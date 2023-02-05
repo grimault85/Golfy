@@ -1,6 +1,5 @@
 <?php
 
-//TODO se connecter a la bdd pour recuperer les contenus, les user_id et la date de publication des posts 
 require_once './model/class/DB.php';
 require './model/class/UserModel.php';
 

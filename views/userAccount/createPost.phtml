@@ -1,14 +1,27 @@
 <div class="container mt-5">
     <h1 class="text-center">Création de post</h1>
-    <form action="createPost" method="post">
-        <div class="form-group">
-            <label for="title">Titre</label>
-            <input type="text" class="form-control" id="title" name="title" required>
+    <?php if (Session::getError() !== null) : ?>
+        <div class="alert alert-danger" role="alert">
+            <?= Session::getError() ?>
         </div>
-        <div class="form-group mb-5">
-            <label for="content">Contenu</label>
-            <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+    <?php endif; ?>
+    <?php if (!Session::isPosted()) : ?>
+        <form action="createPost" method="post">
+            <div class="form-group">
+                <label for="title">Titre</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group mb-5">
+                <label for="content">Contenu</label>
+                <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Créer le post</button>
+        </form>
+    <?php else : ?>
+        <div class="alert alert-success" role="alert">
+            <?= 'Votre article à été publié !' ?>
+
         </div>
-        <button type="submit" class="btn btn-primary">Créer le post</button>
-    </form>
+    <?php endif ?>
+
 </div>

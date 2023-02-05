@@ -45,9 +45,9 @@ class Session
         return isset($_SESSION['user']) ?? false;
     }
 
-    public static function getId(): bool|string
+    public static function getId(): bool|int
     {
-        return self::isConnected() ? $_SESSION['user']['user_id'] : false;
+        return self::isConnected() ? $_SESSION['user']['id'] : false;
     }
 
     public static function getName(): bool|string
@@ -79,5 +79,11 @@ class Session
     {
 
         return isset($_SESSION['registered']) ? true : false;
+    }
+
+    public static function isPosted(): bool
+    {
+
+        return isset($_SESSION['posted']) ? true : false;
     }
 }
