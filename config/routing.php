@@ -4,6 +4,7 @@
 $route = $_SERVER['REQUEST_URI'];
 require_once './config/class/Session.php';
 require 'controller/class/Display.php';
+Session::start();
 $controller = new Display();
 
 // Règles de routage
