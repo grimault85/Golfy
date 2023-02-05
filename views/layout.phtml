@@ -19,12 +19,14 @@
                     <li><a href="blog" class="text-white nav-link px-2 link-dark">Le Blog</a></li>
                 </ul>
                 <div class="d-flex col-md-3 text-end list-unstyled">
-                    <!--TODO conditionner selon la session utiliser-->
-                    <li><a style="width:90px" href="login" class="btn btn-outline-primary text-white  ">Login</a></li>
-                    <li><a style="width:90px" href="signUp" class="btn btn-primary text-white ">Sign-Up</a></li>
-                    <li><a style="width:90px" href="logout" class="btn btn-secondary">Logout</a></li>
-                    <li><img src="./assets/user.png" class="rounded-circle" height="40" width="40" alt="Avatar"></li>
-                    <li><a class="btn btn-primary" href="userSpace">Mon compte</a></li>
+                    <?php if (!Session::isConnected()) : ?>
+                        <li><a style="width:90px" href="login" class="btn btn-outline-primary text-white  ">Login</a></li>
+                        <li><a style="width:90px" href="signUp" class="btn btn-primary text-white ">Sign-Up</a></li>
+                    <?php else : ?>
+                        <li><a style="width:90px" href="logout" class="btn btn-secondary">Logout</a></li>
+                        <li><img src="./assets/user.png" class="rounded-circle" height="40" width="40" alt="Avatar"></li>
+                        <li><a class="btn btn-primary" href="userSpace">Mon compte</a></li>
+                    <?php endif ?>
                 </div>
             </nav>
         </header>

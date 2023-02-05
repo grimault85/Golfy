@@ -17,7 +17,6 @@ switch ($route) {
         $controller->login();
         break;
     case '/userSpace':
-        require './controller/login.php';
         if (Session::isAdmin()) {
             $controller->backOffice();
         } else $controller->userSpace();
@@ -25,6 +24,10 @@ switch ($route) {
     case '/signUp':
         require './controller/signUp.php';
         $controller->signUp();
+        break;
+    case '/logout':
+        require './controller/logout.php';
+        $controller->home();
         break;
     default:
         http_response_code(404);
