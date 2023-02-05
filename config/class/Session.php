@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-
+require './model/class/PostModel.php';
 /**
  * Classe représentant la session php $_SESSION
  *
@@ -30,9 +30,10 @@ class Session
         unset($_SESSION['user']);
     }
 
-    public static function init(string $nom, string $email, int $role): void
+    public static function init(int $user_id, string $nom, string $email, int $role): void
     {
         $_SESSION['user'] = [
+            'id' => $user_id,
             'name'  => $nom,
             'email' => $email,
             'role' => $role
@@ -42,6 +43,11 @@ class Session
     public static function isConnected(): bool
     {
         return isset($_SESSION['user']) ?? false;
+    }
+
+    public static function getId(): bool|string
+    {
+        return self::isConnected() ? $_SESSION['user']['user_id'] : false;
     }
 
     public static function getName(): bool|string

@@ -28,6 +28,18 @@ class Display
         include $this->layout;
     }
 
+    public function createPost()
+    {
+        $content =  './views/userAccount/createPost.phtml';
+        include $this->layout;
+    }
+
+    public function blog()
+    {
+        $content =  './views/pages/blog.phtml';
+        include $this->layout;
+    }
+
     public function backOffice()
     {
         $content =  './views/admin/backOffice.phtml';

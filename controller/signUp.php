@@ -30,7 +30,7 @@ if (isset($_POST) && !empty($_POST)) {
                     } else {
                         // Hashage pwd
                         $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
-                        $userM->insert($name, $email, $passwordHashed);
+                        $userM->insertUser($name, $email, $passwordHashed);
                         $_SESSION['registered'] = 'ok';
                     }
                 } else $error = 'Le champ password est trop court';
