@@ -27,8 +27,10 @@ class PostModel extends DB
     {
 
         $q = $this->getPdo()->prepare(
-            'SELECT title, content, created_at,  user_id'
+            'SELECT title, content, post.created_at, user.name FROM post JOIN user ON post.user_id = user.id
+            '
         );
+        $q->execute();
         return $q->fetch();
     }
 

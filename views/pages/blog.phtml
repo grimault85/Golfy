@@ -1,20 +1,14 @@
-<div class="container mt-5">
-    <h1 class="text-center">Bienvenue sur le blog</h1>
-    <div id="posts" class="mt-5">
-        <!-- TODO inserer les post via blog.php -->
+<?php require './controller/blog.php' ?> <!-- TODO ne pas repeter cette ligne -->
 
-        <?php foreach ($posts as $post) { ?>
-            <div class="card mb-3">
-                <div class="card-header">
-                    <?php echo $post['title']; ?>
-                </div>
-                <div class="card-body">
-                    <?php echo $post['content']; ?>
-                </div>
-                <div class="card-footer text-muted">
-                    Posté par utilisateur <?php echo $post['user_id']; ?>
-                </div>
-            </div>
-        <?php } ?>
+
+<div class="container my-5 mb-5">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4"><?= $posts['title'] ?></h2>
+            <p><?= $posts['content'] ?></p>
+        </div>
+        <div class="card-footer text-muted text-center">
+            Posté par <?= $posts['name'] ?> le <?= date('d/m/Y', strtotime($posts['created_at'])) ?>
+        </div>
     </div>
 </div>
