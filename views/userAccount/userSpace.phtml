@@ -1,0 +1,70 @@
+<div class="container mt-5">
+    <h1 class="text-center">Bienvenue dans votre espace <?= Session::getName() ?></h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card mb-5">
+                <div class="card-header">
+                    <h3>Vos informations</h3>
+                </div>
+                <div class="card-body">
+                    <p><b>Pseudo :</b> <?= Session::getName() ?></p>
+                    <p><b>Email :</b> <?= Session::getEmail() ?></p>
+                </div>
+                <div class="card-footer">
+                    <a style="width:90px" href="logout" class="btn btn-primary ">Logout</a>
+                    <button type="button" class="btn btn-warning btn-block" data-bs-toggle="modal" data-bs-target="#modalEdit">Modifier</button>
+                </div>
+            </div>
+            <!--TODO n'afficher cette carte que si l'utilisateur a déja poster, sinon afficher aucun poste publier-->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Vos post</h3>
+                </div>
+                <!-- TODO afficher les post effectuer -->
+                <div class="card-body">
+                    <p><b>Titre :</b> <?= 'quelque chose' ?></p>
+                    <p><b>Texte :</b> <?= 'quelque chose' ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modification des informations</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </button>
+                </div>
+                <!--TODO Ajouter les message d'erreur du form-->
+                <div class="modal-body">
+                    <p style="color:red">Seule les informations renseignées serons modifiées</p>
+                    <form action='/userSpace' method="post">
+                        <div class="form-group">
+                            <label for="username">Entrez un nouveau pseudo</label>
+                            <input type="text" name='name' class="form-control" id="username" value="<?php echo $user['username']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Entrez un nouvel email</label>
+                            <input type="email" name='email' class="form-control" id="email" value="<?php echo $user['email']; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Entrez un nouveau mot de passe</label>
+                            <input type="password" name='password' class="form-control" id="password">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-secondary">Annuler</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Enregistrer</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

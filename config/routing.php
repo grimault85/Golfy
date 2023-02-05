@@ -16,10 +16,12 @@ switch ($route) {
         require './controller/login.php';
         $controller->login();
         break;
-        // case '/userSpace':
-        //     require './controller/userSpace.php';
-        //     $controller->userSpace();
-        //     break;
+    case '/userSpace':
+        require './controller/login.php';
+        if (Session::isAdmin()) {
+            $controller->backOffice();
+        } else $controller->userSpace();
+        break;
     case '/signUp':
         require './controller/signUp.php';
         $controller->signUp();

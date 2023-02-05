@@ -31,7 +31,6 @@ if (isset($_POST) && !empty($_POST)) {
                     // Check password
 
                     if (password_verify($password, $user['password'])) {
-                        // TODO isAdmin
                         session::init($user['name'], $email, $user['role_id']);
                         $notif = 'Connexion avec succès';
                     } else $error = 'Mot de pass incorrect';

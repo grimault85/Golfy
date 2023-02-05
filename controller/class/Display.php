@@ -22,9 +22,15 @@ class Display
         include $this->layout;
     }
 
-    // public function userSpace()
-    // {
-    //     $content =  './views/userAccount/userSpace.phtml';
-    //     include $this->layout;
-    // }
+    public function userSpace()
+    {
+        $content =  './views/userAccount/userSpace.phtml';
+        include $this->layout;
+    }
+
+    public function backOffice()
+    {
+        $content =  './views/admin/backOffice.phtml';
+        include $this->layout;
+    }
 }

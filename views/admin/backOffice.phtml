@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <h1 class="text-center">Page d'administration</h1>
+    <div class="row">
+        <div class="col-md-6 m-auto">
+            <p>Nombre total d'utilisateurs inscrits : <?php echo $totalUsers; ?></p>
+            <p>Pourcentage d'utilisateurs inscrits : <?php echo $percentageUsers; ?>%</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Mois</th>
+                        <th>Nombre de créations de comptes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($usersByMonth as $month => $count) : ?>
+                        <tr>
+                            <td><?php echo $month; ?></td>
+                            <td><?php echo $count; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

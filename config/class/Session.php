@@ -44,21 +44,18 @@ class Session
         return isset($_SESSION['user']) ?? false;
     }
 
-    public static function getLogged(): bool|array
+    public static function getName(): bool|string
     {
-        // il faut utiliser 'self' ou le nom de la classe elle-même, ici 'Session' devant l'opérateur
-        return self::isConnected() ? $_SESSION['user'] : false;
+        return self::isConnected() ? $_SESSION['user']['name'] : false;
     }
 
-    public static function get(): bool|array
+    public static function getEmail(): bool|string
     {
-        // il faut utiliser 'self' ou le nom de la classe elle-même, ici 'Session' devant l'opérateur
-        return self::isConnected() ? $_SESSION['email'] : false;
+        return self::isConnected() ? $_SESSION['user']['email'] : false;
     }
 
     public static function isAdmin(): bool
     {
-        // il faut utiliser 'self' ou le nom de la classe elle-même, ici 'Session' devant l'opérateur
         return self::isConnected() && $_SESSION['user']['role'] === 1 ? true : false;
     }
 
