@@ -24,7 +24,12 @@ if (isset($_POST) && !empty($_POST)) {
                 require 'model/class/PostModel.php';
                 $postM = new postModel();
                 // Check if user exist
-                $post = $postM->insertPost($title, $content);
+                try {
+
+                    $post = $postM->insertPost($title, $content);
+                } catch (PDOException $e) {
+                    return $e->getMessage();
+                }
 
                 $_SESSION['posted'] = 'ok';
             } else $error = 'Le contenu de l\'article est trop court';

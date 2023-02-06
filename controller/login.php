@@ -25,7 +25,12 @@ if (isset($_POST) && !empty($_POST)) {
                 require 'model/class/UserModel.php';
                 $userM = new UserModel();
                 // Check if user exist
-                $user = $userM->findByEmail($email);
+                try {
+
+                    $user = $userM->findByEmail($email);
+                } catch (PDOException $e) {
+                    return $e->getMessage();
+                }
                 // Check
                 if ($user) {
                     // Check password
