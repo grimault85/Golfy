@@ -17,10 +17,14 @@ switch ($route) {
         $controller->login();
         break;
     case '/userSpace':
-        require './controller/userSpace.php';
+
         if (Session::isAdmin()) {
-            $controller->backOffice();
-        } else $controller->userSpace();
+            require './controller/backOffice.php';
+            $controller->backOffice($userNb);
+        } else {
+            require './controller/userSpace.php';
+            $controller->userSpace();
+        }
         break;
     case '/createPost':
         require './controller/createPost.php';
@@ -36,7 +40,7 @@ switch ($route) {
         break;
     case '/blog':
         require './controller/blog.php';
-        $controller->blog();
+        $controller->blog($posts['title'], $posts['content'], $posts['name'], $posts['created_at']);
         break;
     default:
         http_response_code(404);

@@ -25,6 +25,7 @@ class Display
     public function userSpace()
     {
         $content =  './views/userAccount/userSpace.phtml';
+
         include $this->layout;
     }
 
@@ -34,13 +35,13 @@ class Display
         include $this->layout;
     }
 
-    public function blog()
+    public function blog(string $title, string $blogContent, string $name, string $date)
     {
         $content =  './views/pages/blog.phtml';
         include $this->layout;
     }
 
-    public function backOffice()
+    public function backOffice(int $userNb)
     {
         $content =  './views/admin/backOffice.phtml';
         include $this->layout;

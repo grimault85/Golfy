@@ -17,6 +17,19 @@ class UserModel extends DB
         ]);
     }
 
+    public function allUser(): bool|array
+    {
+
+        $q = $this->getPdo()->prepare(
+            'SELECT name 
+            FROM user 
+            WHERE role_id = 2
+        '
+        );
+        $q->execute();
+        return $q->fetchAll();
+    }
+
     public function findByEmail(string $email): bool|array
     {
         $q = $this->getPdo()->prepare('SELECT id, name, password, created_at, role_id FROM user WHERE email = :mail');
