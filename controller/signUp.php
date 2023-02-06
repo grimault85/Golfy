@@ -4,22 +4,19 @@ $error = null;
 $isRegistered = null;
 
 // test Post for insert or delete
-if (isset($_POST) && !empty($_POST)) {
+if (FormValidator::isPostEmpty()) {
     // Check Empty fields
-    foreach ($_POST as $attrName => $field) {
-        if (empty($field)) {
-            $error = 'Il y un champ vide';
-        }
-    }
+    FormValidator::isFieldsEmpty();
+
     if (is_null($error)) {
         // Extraction du post
         extract($_POST);
         // Check name
-        if (strlen($name) <= 30) {
+        if (FormValidator::isShortName($name, 30)) {
             // Check Email
-            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            if (FormValidator::isEmail($email)) {
                 // Check pwd
-                if (strlen($password) >= 6) {
+                if (FormValidator::isPassword($password)) {
                     require 'model/class/UserModel.php';
                     $userM = new UserModel();
 
