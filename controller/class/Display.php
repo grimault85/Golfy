@@ -4,44 +4,44 @@ class Display
 {
     public $layout = './views/layout.phtml';
 
-    public function home()
+    public function home(): void
     {
         $content =  './views/pages/home.phtml';
         include $this->layout;
     }
 
-    public function signUp()
+    public function signUp(): void
     {
         $content =  './views/auth/signUp.phtml';
         include $this->layout;
     }
 
-    public function login()
+    public function login(): void
     {
         $content =  './views/auth/login.phtml';
         include $this->layout;
     }
 
-    public function userSpace(array $title)
+    public function userSpace(bool|array $title): void
     {
         $content =  './views/userAccount/userSpace.phtml';
 
         include $this->layout;
     }
 
-    public function createPost()
+    public function createPost(): void
     {
         $content =  './views/userAccount/createPost.phtml';
         include $this->layout;
     }
 
-    public function blog(string $title, string $blogContent, string $name, string $date)
+    public function blog(string $title, string $blogContent, string $name, string $date, array $comments): void
     {
         $content =  './views/pages/blog.phtml';
         include $this->layout;
     }
 
-    public function backOffice(int $userNb)
+    public function backOffice(int $userNb): void
     {
         $content =  './views/admin/backOffice.phtml';
         include $this->layout;

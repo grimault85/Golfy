@@ -38,9 +38,11 @@ switch ($route) {
         require './controller/logout.php';
         $controller->home();
         break;
+    case '/addComment':
     case '/blog':
         require './controller/blog.php';
-        $controller->blog($posts['title'], $posts['content'], $posts['name'], $posts['created_at']);
+        require './controller/addComment.php';
+        $controller->blog($posts['title'], $posts['content'], $posts['name'], $posts['created_at'], $comments);
         break;
     default:
         http_response_code(404);

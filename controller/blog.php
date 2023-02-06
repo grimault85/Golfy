@@ -1,13 +1,14 @@
 <?php
 
-require_once './model/class/PostModel.php';
+require_once './model/class/CommentModel.php';
 
+if (Session::isConnected()) {
+    $postModel = new PostModel();
 
-$postModel = new PostModel();
+    try {
 
-try {
-
-    $posts = $postModel->selectPost();
-} catch (PDOException $e) {
-    return $e->getMessage();
+        $posts = $postModel->selectPost();
+    } catch (PDOException $e) {
+        return $e->getMessage();
+    }
 }

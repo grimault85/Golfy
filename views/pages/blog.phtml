@@ -9,3 +9,24 @@
         </div>
     </div>
 </div>
+<div class="container my-5">
+    <h3 class="mb-4">Commentaires</h3>
+    <div id="comments">
+        <!-- Afficher les commentaires existants -->
+        <?php foreach ($comments as $comment) : ?>
+            <div class="media mb-3">
+                <div class="media-body">
+                    <p class="mt-0"><strong><?= htmlspecialchars($comment['name']) ?></strong> le <span class="text-muted"><?= date('d/m/Y', strtotime(htmlspecialchars($comment['created_at']))) ?></span></p>
+                    <p><?= htmlspecialchars($comment['comment']) ?></p>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <!-- Formulaire pour ajouter un commentaire -->
+    <form action="addComment" method="post">
+        <div class="form-group">
+            <textarea class="form-control" name="content" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Publier</button>
+    </form>
+</div>
