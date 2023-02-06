@@ -2,8 +2,8 @@
     <h1 class="text-center">Page d'administration</h1>
     <div class="row">
         <div class="col-md-6 m-auto">
-            <p>Nombre total d'utilisateurs inscrits : <?= $userNb ?></p>
-            <p>Pourcentage d'utilisateurs inscrits : <?php echo $percentageUsers; ?>%</p>
+            <p>Nombre total d'utilisateurs inscrits : <?= htmlspecialchars($userNb)  ?></p>
+            <p>Pourcentage d'utilisateurs inscrits : <?php  ?>%</p>
             <table class="table">
                 <thead>
                     <tr>

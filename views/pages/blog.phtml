@@ -1,11 +1,11 @@
 <div class="container my-5 mb-5">
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title text-center mb-4"><?= $title ?></h2>
-            <p><?= $blogContent ?></p>
+            <h2 class="card-title text-center mb-4"><?= htmlspecialchars($title) ?></h2>
+            <p><?= htmlspecialchars($blogContent) ?></p>
         </div>
         <div class="card-footer text-muted text-center">
-            Posté par <?= $name ?> le <?= date('d/m/Y', strtotime($date)) ?>
+            Posté par <?= htmlspecialchars($name) ?> le <?= date('d/m/Y', strtotime(htmlspecialchars($date))) ?>
         </div>
     </div>
 </div>

@@ -52,12 +52,12 @@ class Session
 
     public static function getName(): bool|string
     {
-        return self::isConnected() ? $_SESSION['user']['name'] : false;
+        return self::isConnected() ? htmlspecialchars($_SESSION['user']['name']) : false;
     }
 
     public static function getEmail(): bool|string
     {
-        return self::isConnected() ? $_SESSION['user']['email'] : false;
+        return self::isConnected() ? htmlspecialchars($_SESSION['user']['email']) : false;
     }
 
     public static function isAdmin(): bool
