@@ -22,15 +22,28 @@ if (isset($_POST) && !empty($_POST)) {
                 if (strlen($password) >= 6) {
                     require 'model/class/UserModel.php';
                     $userM = new UserModel();
-                    // Check if user exist
-                    $user = $userM->findByEmail($email);
+
+                    try {
+                        $user = $userM->findByEmail($email);
+                    } catch (PDOException $e) {
+                        return $e->getMessage();
+                    }
+
                     // Check
                     if ($user) {
                         $error = 'Un utilisateur existe déjà avec cet email';
                     } else {
                         // Hashage pwd
+
                         $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
-                        $userM->insertUser($name, $email, $passwordHashed);
+
+                        try {
+                            $userM->insertUser($name, $email, $passwordHashed);
+                        } catch (PDOException $e) {
+                            return $e->getMessage();
+                        }
+
+
                         $_SESSION['registered'] = 'ok';
                     }
                 } else $error = 'Le champ password est trop court';
