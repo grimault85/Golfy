@@ -3,7 +3,7 @@ require_once './model/class/PostModel.php';
 require_once './model/class/UserModel.php';
 
 
-//TODO regler le probleme de modification
+
 $error = null;
 
 // test Post for insert or delete
