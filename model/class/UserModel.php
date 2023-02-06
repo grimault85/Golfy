@@ -36,4 +36,46 @@ class UserModel extends DB
         $q->execute(['mail' => $email]);
         return $q->fetch();
     }
+
+    public function updateName(string $name): void
+    {
+
+        $q = $this->getPdo()->prepare(
+            'UPDATE user 
+            SET name= :name
+            WHERE id = :id'
+        );
+        $q->execute([
+            'name' => $name,
+            'id' => Session::getId()
+        ]);
+    }
+
+    public function updateEmail(string $email): void
+    {
+
+        $q = $this->getPdo()->prepare(
+            'UPDATE user 
+            SET email= :email
+            WHERE id = :id'
+        );
+        $q->execute([
+            'email' => $email,
+            'id' => Session::getId()
+        ]);
+    }
+
+    public function updatePassword(string $passwordHashed): void
+    {
+
+        $q = $this->getPdo()->prepare(
+            'UPDATE user 
+            SET password= :password
+            WHERE id = :id'
+        );
+        $q->execute([
+            'password' => $passwordHashed,
+            'id' => Session::getId()
+        ]);
+    }
 }
