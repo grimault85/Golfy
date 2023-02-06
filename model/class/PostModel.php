@@ -6,7 +6,7 @@ require './model/class/UserModel.php';
 
 class PostModel extends DB
 {
-    // public string $table = 'post';
+
 
     public function insertPost(string $title, string $content): void
     {
@@ -34,19 +34,16 @@ class PostModel extends DB
         return $q->fetch();
     }
 
-    public function isPost(): bool
+    public function getTitle(): bool|array
     {
 
         $q = $this->getPdo()->prepare('SELECT title
         FROM post
         WHERE user_id = :user_id
-        LIMIT 1
         ');
         $q->execute([
             'user_id' => Session::getId()
         ]);
-        $q->fetch();
-
-        return !is_null($q) ? true : false;
+        return $q->fetch();
     }
 }
