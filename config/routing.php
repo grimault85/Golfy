@@ -23,7 +23,7 @@ switch ($route) {
             $controller->backOffice($userNb);
         } else {
             require './controller/userSpace.php';
-            $controller->userSpace();
+            $controller->userSpace($title);
         }
         break;
     case '/createPost':
