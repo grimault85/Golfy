@@ -7,6 +7,14 @@
         <div class="card-footer text-muted text-center">
             Posté par <?= htmlspecialchars($name) ?> le <?= date('d/m/Y', strtotime(htmlspecialchars($date))) ?>
         </div>
+        <?php if (Session::isAdmin()) : ?>
+            <div class="text-center mt-3">
+                <form action="deletePost" method="post">
+                    <input type="hidden" name="delete" value="<?= htmlspecialchars($postId) ?>">
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
 <div class="container my-5">
