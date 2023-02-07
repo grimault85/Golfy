@@ -18,6 +18,9 @@
                 <div class="media-body">
                     <p class="mt-0"><strong><?= htmlspecialchars($comment['name']) ?></strong> le <span class="text-muted"><?= date('d/m/Y', strtotime(htmlspecialchars($comment['created_at']))) ?></span></p>
                     <p><?= htmlspecialchars($comment['comment']) ?></p>
+                    <?php if ($comment['name'] === Session::getName()) : ?>
+                        <p><a href="blog?id=<?= $comment['id'] ?>">Supprimer</a></p>
+                    <?php endif ?>
                 </div>
             </div>
         <?php endforeach; ?>

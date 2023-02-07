@@ -26,12 +26,25 @@ class CommentModel extends DB
     {
 
         $q = $this->getPdo()->prepare(
-            'SELECT comment, Comments.created_at, user.name 
+            'SELECT Comments.id ,comment, Comments.created_at, user.name 
             FROM Comments 
             JOIN user ON Comments.user_id = user.id
             '
         );
         $q->execute();
         return $q->fetchAll();
+    }
+
+    public function deleteComment($comId): void
+    {
+
+        $q = $this->getPdo()->prepare(
+            'DELETE FROM golfy.Comments 
+            WHERE id = :id
+        '
+        );
+        $q->execute([
+            'id' => $comId
+        ]);
     }
 }

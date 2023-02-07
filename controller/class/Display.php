@@ -35,7 +35,7 @@ class Display
         include $this->layout;
     }
 
-    public function blog(string $title, string $blogContent, string $name, string $date, array $comments): void
+    public function blog($title,  $blogContent,  $name,  $date, ?array $comments): void
     {
         $content =  './views/pages/blog.phtml';
         include $this->layout;

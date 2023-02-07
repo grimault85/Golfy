@@ -1,13 +1,16 @@
 <?php
 
+
 require_once './model/class/CommentModel.php';
 
 
-$postModel = new PostModel();
+$commentModel = new CommentModel();
 
 try {
 
-    $posts = $postModel->selectPost();
+    $comment = $commentModel->deleteComment($_GET['id']);
 } catch (PDOException $e) {
     return $e->getMessage();
 }
+
+Session::setError($error);

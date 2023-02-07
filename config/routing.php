@@ -1,14 +1,14 @@
 <?php
 
 // Routing des requêtes HTTP
-$route = $_SERVER['REQUEST_URI'];
+$route = parse_url($_SERVER['REQUEST_URI']);
 require_once './config/class/Session.php';
 require 'controller/class/Display.php';
 Session::start();
 $controller = new Display();
 
 // Règles de routage
-switch ($route) {
+switch ($route['path']) {
     case '/':
         $controller->home();
         break;
@@ -39,9 +39,12 @@ switch ($route) {
         $controller->home();
         break;
     case '/addComment':
+    case '/suppComment':
+    case '/blog?id=' . $comment['id'];
     case '/blog':
         require './controller/blog.php';
         require './controller/addComment.php';
+        require './controller/suppComment.php';
         $controller->blog($posts['title'], $posts['content'], $posts['name'], $posts['created_at'], $comments);
         break;
     default:
