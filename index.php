@@ -9,3 +9,5 @@ require_once './config/routing.php';
 
 //TODO sécurisation avec HTMLspecialchars sur les controller
 //TODO sécurisation de la session par controller (isConnected)
+
+//TODO vider les erreur et notif de la session lorsqu'elle ont été afficher
